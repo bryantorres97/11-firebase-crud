@@ -1,12 +1,13 @@
 <h1 class="animated fadeIn fast">Lista de heroes</h1>
 <hr>
 <div class="row animated fadeIn fast">
-    <div class="col-md-12">
-        <button [routerLink]="['/heroe','nuevo']" type="button" class="btn btn-outline-primary" name="button">Nuevo héroe</button>
-    </div>
+  <div class="col-md-12">
+    <button [routerLink]="['/heroe','nuevo']" type="button" class="btn btn-outline-primary" name="button">Nuevo
+      héroe</button>
+  </div>
 </div>
 <br>
-<div class="row">
+<div *ngIf="!loading" class="row">
   <div class="col-md-12 animated fadeIn">
     <div class="table-responsive">
       <table class="table">
@@ -23,10 +24,23 @@
             <th scope="row">{{ i + 1 }}</th>
             <td>{{heroes[k].nombre}}</td>
             <td>{{heroes[k].casa}}</td>
-            <td></td>
+            <td class="text-right w270">
+              <button [routerLink]="['/heroe', k]" type="button" class="btn btn-outline-success"
+                style="margin-right: 10px"><i class="far fa-edit"></i> Editar</button>
+              <button (click)="borrarHeroe(k)" type="button" class="btn btn-outline-danger"><i
+                  class="far fa-trash-alt"></i> Eliminar</button>
+            </td>
           </tr>
         </tbody>
       </table>
+      <div class="alert alert-success" role="alert" *ngIf="(heroes | keys).length === 0 && !loading">
+        <strong>No existen registros que mostrar</strong>
+      </div>      
     </div>
+  </div>
+</div>
+<div *ngIf="loading" class="row animated text-center fadeIn">
+  <div class="col">
+    <i class="fa fa-sync fa-spin fa-5x"></i>
   </div>
 </div>

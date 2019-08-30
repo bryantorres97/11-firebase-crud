@@ -11,6 +11,7 @@ import { Heroe } from 'src/app/interfaces/heroe.interface';
 export class HeroesComponent implements OnInit {
 
   heroes: Heroe[] = [];
+  loading = true;
 
   constructor(private heroesService: HeroesService) {
     this.heroesService.getHeroes().subscribe((data: Heroe[]) => {
@@ -20,11 +21,21 @@ export class HeroesComponent implements OnInit {
       // for (const key$ in data) {
       //   this.heroes.push( data[ key$ ]);
       // }
-
+      this.loading = false;
     });
    }
 
   ngOnInit() {
+  }
+
+  borrarHeroe(key$: string) {
+    this.heroesService.deleteHeroe(key$).subscribe( data => {
+      if (data) {
+        console.error(data);
+      } else {
+        delete this.heroes[key$];
+      }
+    });
   }
 
 }

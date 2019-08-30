@@ -52,4 +52,9 @@ export class HeroesService {
     return this.http.get(this.heroesURL).pipe(map(res => res));
   }
 
+  deleteHeroe(key$: string) {
+    const url = `${ this.heroeURL }/${ key$ }.json`;
+    return this.http.delete(url).pipe(map(res => res));
+  }
+
 }

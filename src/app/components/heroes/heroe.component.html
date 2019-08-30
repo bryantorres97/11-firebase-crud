@@ -1,43 +1,33 @@
-<h3 class="animated fadeIn fast">Héroe <small>Nombre...</small></h3>
+<h3 class="animated fadeIn fast">Héroe <small>{{heroe.nombre}}</small></h3>
 <hr>
-<button routerLink="heroes" class="btn btn-outline-danger animated fadeIn fast" style="margin-right: 10px">Regresar</button>
-<button (click)="agregarNuevo(forma)"
-        type="button" 
-        class="btn btn-outline-success animated fadeIn fast">Agregar héroe</button>
+<button routerLink="heroes" class="btn btn-outline-danger animated fadeIn fast"
+  style="margin-right: 10px">Regresar</button>
+<button (click)="agregarNuevo(forma)" type="button" class="btn btn-outline-success animated fadeIn fast">Agregar
+  héroe</button>
 <br>
 <div class="row animated fadeIn">
-    <div class="col-md-12">
-        <form (ngSubmit)="guardar()" #forma="ngForm">
-            <div class="form-group">
-                <label>Nombre</label>
-                <input  [(ngModel)]="heroe.nombre"
-                        type="text" 
-                        name="nombre" 
-                        class="form-control" 
-                        placeholder="Nombre del héroe" 
-                        required
-                        autocomplete="off">
-            </div>
-            <div class="form-group">
-                <label>Casa</label>
-                <select [(ngModel)]="heroe.casa"
-                        class="form-control" 
-                        name="casa">
-                    <option value="Marvel">Marvel</option>
-                    <option value="DC">DC</option>
-                </select>
-            </div>
-            <div class="form-group">
-                <label>Bio</label>
-                <textarea   [(ngModel)]="heroe.bio"
-                            class="form-control" 
-                            name="bio" 
-                            placeholder="Bio del héroe" 
-                            required ></textarea>
-            </div>
-            <div class="form-group center">
-                <button [disabled]="forma.invalid" type="submit" class="btn btn-outline-primary">Guardar cambios</button>
-            </div>
-        </form>
-    </div>
+  <div class="col-md-12">
+    <form (ngSubmit)="guardar()" #forma="ngForm">
+      <div class="form-group">
+        <label>Nombre</label>
+        <input [(ngModel)]="heroe.nombre" type="text" name="nombre" class="form-control" placeholder="Nombre del héroe"
+          required autocomplete="off">
+      </div>
+      <div class="form-group">
+        <label>Casa</label>
+        <select [(ngModel)]="heroe.casa" class="form-control" name="casa">
+          <option value="Marvel">Marvel</option>
+          <option value="DC">DC</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Bio</label>
+        <textarea [(ngModel)]="heroe.bio" class="form-control" name="bio" placeholder="Bio del héroe"
+          required></textarea>
+      </div>
+      <div class="form-group center">
+        <button [disabled]="forma.invalid" type="submit" class="btn btn-outline-primary">Guardar cambios</button>
+      </div>
+    </form>
+  </div>
 </div>
