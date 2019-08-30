@@ -11,6 +11,7 @@ import { HeroeComponent } from './components/heroes/heroe.component';
 import { APPROUTING } from './app.routes';
 
 import { HeroesService } from './services/heroes.service';
+import { KeysPipe } from './pipes/keys.pipe';
 
 
 
@@ -18,7 +19,8 @@ import { HeroesService } from './services/heroes.service';
   declarations: [
     AppComponent,
     HeroesComponent,
-    HeroeComponent
+    HeroeComponent,
+    KeysPipe
   ],
   imports: [
     BrowserModule,
